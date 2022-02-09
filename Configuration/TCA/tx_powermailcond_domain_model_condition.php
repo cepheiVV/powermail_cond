@@ -1,6 +1,4 @@
 <?php
-use In2code\PowermailCond\Utility\ConfigurationUtility;
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:powermail_cond/Resources/Private/Language/locallang_db.xml:tx_powermailcond_conditions',
@@ -16,14 +14,10 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'iconfile' => ConfigurationUtility::getIconPath(
+        'iconfile' => \In2code\PowermailCond\Utility\ConfigurationUtility::getIconPath(
             \In2code\PowermailCond\Domain\Model\Condition::TABLE_NAME . '.gif'
         ),
         'hideTable' => 1
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid,l18n_parent,l18n_diffsource,hidden,starttime,
-            endtime,conditioncontainer,title,target_field,actions,filter_select_field,rules,conjunction',
     ],
     'types' => [
         '1' => [
@@ -37,22 +31,7 @@ return [
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'select',
-                'special' => 'languages',
-                'renderType' => 'selectSingle',
-
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ]
-                ],
-                'default' => 0
-            ],
+            'config' => ['type' => 'language'],
         ],
         'l18n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',

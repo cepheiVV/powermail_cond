@@ -1,6 +1,4 @@
 <?php
-use In2code\PowermailCond\Utility\ConfigurationUtility;
-
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:powermail_cond/Resources/Private/Language/locallang_db.xml:tx_powermailcond_rules',
@@ -13,13 +11,10 @@ return [
         'enablecolumns' => [
             'disabled' => 'hidden'
         ],
-        'iconfile' => ConfigurationUtility::getIconPath(
+        'iconfile' => \In2code\PowermailCond\Utility\ConfigurationUtility::getIconPath(
             \In2code\PowermailCond\Domain\Model\Rule::TABLE_NAME . '.gif'
         ),
         'hideTable' => 1
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'hidden,conditions,title,start_field,ops,cond_string,equal_field',
     ],
     'types' => [
         '0' => ['showitem' => 'conditions,title,start_field,ops,cond_string,equal_field']

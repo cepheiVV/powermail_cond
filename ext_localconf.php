@@ -1,5 +1,5 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
@@ -16,13 +16,13 @@ call_user_func(function () {
      * Include Plugins
      */
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'In2code.powermail_cond',
+        'Powermairectorprefix20220126lCond',
         'Pi1',
         [
-            'Condition' => 'buildCondition'
+            \In2code\Powermairectorprefix20220126lCond\Controller\ConditionController::class => 'buildCondition'
         ],
         [
-            'Condition' => 'buildCondition'
+            \In2code\Powermairectorprefix20220126lCond\Controller\ConditionController::class => 'buildCondition'
         ]
     );
 

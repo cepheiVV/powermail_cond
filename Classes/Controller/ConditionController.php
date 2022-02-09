@@ -1,6 +1,7 @@
 <?php
 namespace In2code\PowermailCond\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use In2code\Powermail\Domain\Model\Field;
 use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Model\Page;
@@ -52,7 +53,7 @@ class ConditionController extends ActionController
      * @throws Exception
      * @throws UnsupportedVariableTypeException
      */
-    public function buildConditionAction(): string
+    public function buildConditionAction(): ResponseInterface
     {
         $arguments = [];
         $formRepository = $this->objectManager->get(FormRepository::class);
@@ -68,7 +69,7 @@ class ConditionController extends ActionController
             SessionUtility::setSession($arguments);
             ArrayUtility::unsetByKeys($arguments, ['backup', 'field']);
         }
-        return json_encode($arguments);
+        return $this->jsonResponse(json_encode($arguments));
     }
 
     /**
